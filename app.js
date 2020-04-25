@@ -19,10 +19,7 @@ const conn = mysql.createConnection({
 });
 
 //connect to database
-conn.connect((err) => {
-  if (err) throw err;
-  console.log('Mysql Connected...');
-});
+
 
 
 app.get('/_healthcheck', (req, res) => {
@@ -34,6 +31,11 @@ app.get('/_healthcheck', (req, res) => {
 });
 //show all products
 app.get('/api/flightschedule', (req, res) => {
+
+  conn.connect((err) => {
+    if (err) throw err;
+    console.log('Mysql Connected...');
+  });
   let sql = "SELECT * FROM test1";
   conn.query(sql, (err, results) => {
     if (err) throw err;
@@ -47,6 +49,10 @@ app.get('/api/flightschedule', (req, res) => {
 
 //show single product
 app.get('/api/flightschedule/:id', (req, res) => {
+  conn.connect((err) => {
+    if (err) throw err;
+    console.log('Mysql Connected...');
+  });
   let sql = "SELECT * FROM test1 WHERE sno=" + req.params.id;
   conn.query(sql, (err, results) => {
     if (err) throw err;
