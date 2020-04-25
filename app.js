@@ -29,7 +29,7 @@ app.get('/_healthcheck', (req, res) => {
 app.get('/api/flightschedule', (req, res) => {
 
  
-  let sql = "SELECT * FROM test1";
+  let sql = "SELECT * FROM quantumairline";
   conn.query(sql, (err, results) => {
     if (err) throw err;
     res.send(JSON.stringify({
@@ -43,7 +43,7 @@ app.get('/api/flightschedule', (req, res) => {
 //show single product
 app.get('/api/flightschedule/:id', (req, res) => {
  
-  let sql = "SELECT * FROM test1 WHERE sno=" + req.params.id;
+  let sql = "SELECT * FROM quantumairline WHERE sno=" + req.params.id;
   conn.query(sql, (err, results) => {
     if (err) throw err;
     res.send(JSON.stringify({
